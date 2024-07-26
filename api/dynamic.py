@@ -47,7 +47,7 @@ html = """
             event.preventDefault();
             username = document.getElementById("usernameInput").value;
            
-            ws = new WebSocket(`ws://192.168.29.158:8000/ws/${username}`);
+            ws = new WebSocket(`wss://${window.location.host}/ws/${username}`);
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages');
                 var message = document.createElement('li');
@@ -146,8 +146,3 @@ async def websocket_endpoint(websocket: WebSocket, username: str):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"Client {username} left the chat")
-
-
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app)
