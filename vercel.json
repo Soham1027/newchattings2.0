@@ -1,23 +1,13 @@
 {
     "functions": {
       "api/dynamic.py": {
-        "runtime": "python3.12"
+        "runtime": "python3.11"
       }
     },
-    "builds": [
-      {
-        "src": "api/dynamic.py",
-        "use": "@vercel/python",
-        "config": {
-          "pythonVersion": "3.12.4"
-        }
-      }
-    ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "api/dynamic.py"
+        "dest": "/api/dynamic.py"
       }
     ]
   }
-  
